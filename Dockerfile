@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy only necessary files to reduce image size (avoid copying unnecessary files)
-COPY requirements.txt /app/
+COPY ./app
 
 # Install dependencies from the requirements.txt file
 RUN pip install flask
