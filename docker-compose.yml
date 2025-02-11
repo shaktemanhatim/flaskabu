@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  flask_app:
+    build: .
+    container_name: flask_app
+    restart: always
+    ports:
+      - "5000:5000"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"   # Fixed the typo here, should be 'ports' instead of 'port'
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - flask_app
